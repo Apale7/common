@@ -1,4 +1,4 @@
-module common
+module github.com/Apale7/common
 
 go 1.15
 
