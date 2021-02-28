@@ -11,7 +11,7 @@ func GetParamsInt64(c *gin.Context, key string) int64 {
 	if err != nil {
 		return -1
 	}
-	
+
 	return res
 }
 
