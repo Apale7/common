@@ -13,7 +13,6 @@ func Unpack(tarFile []byte) (files [][]byte, err error) {
 	tarReader := tar.NewReader(reader)
 	for {
 		hdr, err := tarReader.Next()
-		logrus.Infof("unpack file: %s\n", hdr.Name)
 		if err == io.EOF {
 			break
 		}
@@ -21,6 +20,7 @@ func Unpack(tarFile []byte) (files [][]byte, err error) {
 			logrus.Warnln(err)
 			return files, err
 		}
+		logrus.Infof("unpack file: %s\n", hdr.Name)
 		tmp := []byte{}
 		_, err = tarReader.Read(tmp)
 		if err != nil {
