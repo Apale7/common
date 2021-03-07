@@ -4,6 +4,7 @@ import (
 	"archive/tar"
 	"bytes"
 	"io"
+	"io/ioutil"
 
 	"github.com/sirupsen/logrus"
 )
@@ -21,8 +22,7 @@ func Unpack(tarFile []byte) (files [][]byte, err error) {
 			return files, err
 		}
 		logrus.Infof("unpack file: %s\n", hdr.Name)
-		tmp := []byte{}
-		_, err = tarReader.Read(tmp)
+		tmp, err := ioutil.ReadAll(tarReader)
 		if err != nil {
 			logrus.Warnln(err)
 			return files, err
