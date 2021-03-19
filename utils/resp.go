@@ -28,3 +28,10 @@ func RetErr(c *gin.Context, err error) {
 		})
 	}
 }
+
+func RetSuccess(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"msg":         "success",
+		"status_code": 0,
+	})
+}
